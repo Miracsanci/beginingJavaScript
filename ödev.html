@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BTK Akademi 3. Gün Eğitimi- Ödev</title>
+</head>
+<body style="background-color:#DDAD75  ;"> 
+    <h2 style="border:3px solid black;background-color:aqua;">Hafızaya Veri Kaydetmek  </h2>
+    <label>İsminiz</label>
+    <input type="text" id="isim"><br>
+    <label >Soyisminiz</label>
+    <input type="text" id="soyisim"><br>
+    <button type="button" onclick="veriSakla()"> Veriyi Sakla </button>
+    <br><br>
+    <button type="button" onclick="veriyiGetir(); lokasyonAl()">Veriyi Getir</button> <br>
+    <p id="veri">İsminiz : </p>
+    <p id="veri2">Soy İsminiz :</p>
+   <p id="lokasyon">...</p> 
+    
+    <h3><a href="index.html">Anasayfa</a></h3>
+    <h3><a href="ders1.html">Ders 1</a></h3>
+    <h3><a href="ders2.html">Ders 2</a></h3>
+    <h3><a href="ders3.html">Ders 3</a></h3>
+    <h3><a href="ders4.html">Ders 4</a></h3>
+    <h3><a href="ödev.html">Ödev</a></h3>
+    <script>
+
+        // Veriyi Saklama
+        function veriSakla() 
+        {
+            var  isim   = document.getElementById('isim').value;
+            localStorage.setItem('isim',isim);
+            var  soyisim   = document.getElementById('soyisim').value;
+            localStorage.setItem('soyisim',soyisim);
+            localStorage.setItem('soyisim',soyisim);
+        }
+        // veri getirme
+        function veriyiGetir()
+        {
+            document.getElementById("veri").innerHTML = "İsminiz  : " + localStorage.getItem('isim');
+            document.getElementById("veri2").innerHTML = "Soy İsminiz  : " + localStorage.getItem('soyisim');
+
+        }
+        //Lokasyon alma
+        var lokasyon = document.getElementById("lokasyon");
+        function lokasyonAl()
+        {
+            if (navigator.geolocation){
+                navigator.geolocation.getCurrentPosition(showPosition);
+            }
+            else {
+                lokasyon.innerHTML = "Sen Ucmussun";
+             }
+        }
+        function showPosition(position) {
+            lokasyon.innerHTML="Enlem: "+position.coords.latitude+" <br> Boylam : "+position.coords.longitude;
+         }
+        
+    </script>
+</body>
+</html>
